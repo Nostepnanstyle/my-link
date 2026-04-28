@@ -6,48 +6,125 @@ HTML
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My List Style</title>
     <style>
-        /* ส่วนแต่งสวย (CSS) ใส่รวมไว้ที่นี่เลยจะได้ไม่งง */
-        body { background-color: #0d1117; color: white; font-family: 'Tahoma', sans-serif; display: flex; justify-content: center; padding: 50px 20px; }
-        .container { width: 100%; max-width: 400px; text-align: center; }
-        .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #58a6ff; margin-bottom: 15px; }
-        h1 { font-size: 22px; margin-bottom: 20px; }
-        .list-group { display: flex; flex-direction: column; gap: 12px; }
-        .item { 
-            background: #161b22; 
-            padding: 15px; 
-            border-radius: 10px; 
-            text-decoration: none; 
-            color: #c9d1d9; 
-            border: 1px solid #30363d;
-            transition: 0.3s;
-            display: flex;
-            justify-content: space-between;
-        }
-        .item:hover { background: #21262d; border-color: #58a6ff; transform: translateY(-2px); }
-        .status { color: #58a6ff; font-size: 12px; }
-    </style>
+    /* ตั้งค่าพื้นฐานและพื้นหลัง */
+    body { 
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                    url('https://images.unsplash.com/photo-1514565131-fce0801e5785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* เปลี่ยนรูปพื้นหลังได้ที่นี่ */
+        background-size: cover;
+        background-attachment: fixed;
+        color: white;
+        font-family: 'Kanit', sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 50px 20px;
+    }
+
+    .container { width: 100%; max-width: 900px; text-align: center; }
+
+    /* หัวข้อใหญ่ */
+    h1 { font-size: 60px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(255,255,255,0.5); }
+    
+    /* ตัวเลขสถิติ (3 17 145) */
+    .stats { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; }
+    .stat-box { text-align: center; }
+    .stat-num { font-size: 32px; font-weight: bold; display: block; }
+    .stat-label { font-size: 12px; color: #888; text-transform: uppercase; }
+
+    /* การจัดเรียงการ์ด */
+    .card-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 20px; 
+        margin-top: 20px;
+    }
+
+    /* สไตล์ของการ์ดตัวละคร */
+    .card {
+        background: rgba(20, 20, 20, 0.9);
+        border: 1px solid #333;
+        border-radius: 20px;
+        padding: 20px;
+        border-bottom: 4px solid #ffcc00; /* เส้นสีทองข้างล่าง */
+        transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-10px); border-color: #ffcc00; }
+
+    .profile-section { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; text-align: left; }
+    .card-img { width: 70px; height: 70px; border-radius: 12px; border: 2px solid #ffcc00; object-fit: cover; }
+    .role { font-size: 12px; color: #ffcc00; display: block; }
+    .name { font-size: 20px; font-weight: bold; }
+
+    /* ปุ่มโซเชียลในตัวการ์ด */
+    .social-btns { display: flex; gap: 10px; }
+    .btn { 
+        flex: 1; 
+        background: #111; 
+        color: white; 
+        padding: 8px; 
+        border-radius: 8px; 
+        text-decoration: none; 
+        font-size: 13px;
+        border: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+    .btn:hover { background: #222; border-color: #ffcc00; }
+</style>
 </head>
 <body>
+    <div class="container">
+        <h1>588 NOSTEP</h1>
 
-<div class="container">
-    <img src="https://scontent.fbkk25-1.fna.fbcdn.net/v/t39.30808-6/682455395_1279527037700603_2654065833649434675_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=bo6vhu3Z22gQ7kNvwH3g-mx&_nc_oc=AdpNN80nqj072fzDlM2I6omVtB2dl7QyiasWM-j27CjWWq-vyEFoVHJ8Yz9BCV2Rh0RIHjNd6rve4IDg0Pb-YaSJ&_nc_zt=23&_nc_ht=scontent.fbkk25-1.fna&_nc_gid=f1V441X1o1wQgoR8_ji28g&_nc_ss=7b2a8&oh=00_Af3TMcacIfahfxs3DruP1ueLB0AblueajP89rl3vmYgKdg&oe=69F68612" class="profile-img">
-    <h1>ยินดีต้อนรับ</h1>
-    
-    <div class="list-group">
-        <a href="https://www.facebook.com/nongmind.nostepnanstyle/" class="item">
-            <span>Raduphead Nostepnanstyle</span>
-            <span class="status">คลิกดู</span>
-        </a>
-        <a href="https://www.facebook.com/gethight.lyfestely" class="item">
-            <span>Gethight Nostepnanstyle</span>
-            <span class="status">คลิกดู</span>
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=61584644049375" class="item">
-            <span>Ticha Nostepnanstyle</span>
-            <span class="status">คลิกดู</span>
-        </a>
+        <div class="stats">
+            <div class="stat-box">
+                <span class="stat-num" style="color: #ffcc00;">3</span>
+                <span class="stat-label">Founders</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num" style="color: #ff3366;">17</span>
+                <span class="stat-label">Leaders</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num" style="color: #3399ff;">145</span>
+                <span class="stat-label">Members</span>
+            </div>
+        </div>
+
+        <h2 style="text-align: left; color: #ffcc00; font-size: 18px; margin-bottom: 15px;">FOUNDERS</h2>
+        
+        <div class="card-grid">
+            
+            <div class="card">
+                <div class="profile-section">
+                    <img src="ใส่ลิ้งก์รูปที่นี่" class="card-img">
+                    <div>
+                        <span class="role">OWNER</span>
+                        <span class="name">NongMind</span>
+                    </div>
+                </div>
+                <div class="social-btns">
+                    <a href="#" class="btn">Facebook</a>
+                    <a href="#" class="btn">Instagram</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="profile-section">
+                    <img src="ใส่ลิ้งก์รูปที่นี่" class="card-img">
+                    <div>
+                        <span class="role">FOUNDER</span>
+                        <span class="name">Raduphead</span>
+                    </div>
+                </div>
+                <div class="social-btns">
+                    <a href="#" class="btn">Facebook</a>
+                    <a href="#" class="btn">Instagram</a>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
-
 </body>
 </html>
