@@ -6,81 +6,86 @@
     <title>Nostepnanstyle</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; }
         body { 
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
                         url('https://images.unsplash.com/photo-1514565131-fce0801e5785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-attachment: fixed;
             color: white;
-            font-family: 'Chakra Petch', sans-serif; /* เปลี่ยนฟอนต์ที่นี่ */
+            font-family: 'Chakra Petch', sans-serif;
             display: flex;
             justify-content: center;
             padding: 50px 20px;
+            margin: 0;
         }
 
         .container { width: 100%; max-width: 900px; text-align: center; }
 
-        /* หัวข้อเท่ๆ แบบนีออน */
         h1 { 
             font-size: clamp(30px, 8vw, 60px); 
-            letter-spacing: 8px; 
+            letter-spacing: 5px; 
             text-transform: uppercase; 
             margin-bottom: 10px; 
             color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px #ff3366, 0 0 30px #ff3366; 
+            text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366; 
         }
         
-        .stats { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; }
-        .stat-box { text-align: center; }
-        .stat-num { font-size: 36px; font-weight: bold; display: block; line-height: 1; }
-        .stat-label { font-size: 12px; color: #aaa; text-transform: uppercase; letter-spacing: 2px; }
+        .stats { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+        .stat-box { background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 10px; min-width: 120px; }
+        .stat-num { font-size: 32px; font-weight: bold; display: block; }
+        .stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
         .card-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
             gap: 20px; 
             margin-bottom: 40px;
         }
 
         .card {
-            background: rgba(15, 15, 15, 0.95);
-            border: 1px solid #222;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 15px;
             padding: 20px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s;
             text-align: left;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .card:hover { transform: scale(1.05); border-color: #555; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.3); background: rgba(30, 30, 30, 0.9); }
 
         .profile-section { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-        .card-img { width: 75px; height: 75px; border-radius: 10px; object-fit: cover; border: 2px solid; }
-        .role { font-size: 10px; font-weight: bold; display: block; letter-spacing: 1px; margin-bottom: 4px; }
-        .name { font-size: 19px; font-weight: bold; letter-spacing: 0.5px; }
+        .card-img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; border: 2px solid; flex-shrink: 0; }
+        
+        .info-text { display: flex; flex-direction: column; overflow: hidden; }
+        .role { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+        .name { font-size: 18px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        .social-btns { display: flex; gap: 10px; }
+        .social-btns { display: flex; gap: 10px; margin-top: auto; }
         .btn { 
-            flex: 1; background: #000; color: white; padding: 10px; border-radius: 5px; 
-            text-decoration: none; font-size: 13px; border: 1px solid #333;
+            flex: 1; background: rgba(255,255,255,0.1); color: white; padding: 8px; border-radius: 6px; 
+            text-decoration: none; font-size: 13px; border: 1px solid transparent;
             display: flex; align-items: center; justify-content: center; transition: 0.3s;
         }
-        .btn:hover { background: #fff; color: #000; }
+        .btn:hover { background: #fff; color: #000; font-weight: bold; }
 
-        /* สีประจำตำแหน่ง */
-        .gold { border-left: 5px solid #ffcc00; }
+        /* แยกสีตามตำแหน่งพร้อม Effect Glow */
+        .gold { border-left: 4px solid #ffcc00; }
         .gold .role, .gold .card-img { color: #ffcc00; border-color: #ffcc00; }
-        .gold .name { color: #ffcc00; }
+        .gold .name { color: #fff; text-shadow: 0 0 8px rgba(255, 204, 0, 0.6); }
 
-        .pink { border-left: 5px solid #ff3366; }
+        .pink { border-left: 4px solid #ff3366; }
         .pink .role, .pink .card-img { color: #ff3366; border-color: #ff3366; }
-        .pink .name { color: #ff3366; }
+        .pink .name { color: #fff; text-shadow: 0 0 8px rgba(255, 51, 102, 0.6); }
 
-        .blue { border-left: 5px solid #3399ff; }
+        .blue { border-left: 4px solid #3399ff; }
         .blue .role, .blue .card-img { color: #3399ff; border-color: #3399ff; }
-        .blue .name { color: #3399ff; }
+        .blue .name { color: #fff; text-shadow: 0 0 8px rgba(51, 153, 255, 0.6); }
 
-        .section-title { text-align: left; font-size: 20px; margin-bottom: 20px; letter-spacing: 3px; font-weight: bold; }
+        .section-title { text-align: left; font-size: 18px; margin-bottom: 15px; padding-left: 5px; letter-spacing: 2px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -98,15 +103,14 @@
             <div class="card gold">
                 <div class="profile-section">
                     <img src="https://scontent.fbkk25-1.fna.fbcdn.net/v/t39.30808-6/682455395_1279527037700603_2654065833649434675_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=bo6vhu3Z22gQ7kNvwH3g-mx&_nc_oc=AdpNN80nqj072fzDlM2I6omVtB2dl7QyiasWM-j27CjWWq-vyEFoVHJ8Yz9BCV2Rh0RIHjNd6rve4IDg0Pb-YaSJ&_nc_zt=23&_nc_ht=scontent.fbkk25-1.fna&_nc_gid=ZtzNwCbmX4KNsIYtPLHDfA&_nc_ss=7b2a8&oh=00_Af3fUVeLtMyWvK1ATkIUDQQsopyXjiTyEKNwX0Bdo4a-rQ&oe=69F68612" class="card-img">
-                    <div><span class="role">FOUNDER</span><span class="name">Raduphead</span></div>
+                    <div class="info-text"><span class="role">FOUNDER</span><span class="name">Raduphead</span></div>
                 </div>
                 <div class="social-btns"><a href="https://www.facebook.com/nongmind.nostepnanstyle/" target="_blank" class="btn">Facebook</a></div>
             </div>
 
             <div class="card gold">
                 <div class="profile-section">
-                    <img src="ใส่ลิงก์รูปตรงนี้" class="card-img">
-                    <div><span class="role">FOUNDER</span><span class="name">Gethight</span></div>
+                    <img src="https://via.placeholder.com/150" class="card-img"> <div class="info-text"><span class="role">FOUNDER</span><span class="name">Gethight</span></div>
                 </div>
                 <div class="social-btns"><a href="https://www.facebook.com/gethight.lyfestely" target="_blank" class="btn">Facebook</a></div>
             </div>
@@ -114,18 +118,18 @@
             <div class="card gold">
                 <div class="profile-section">
                     <img src="https://scontent.fbkk25-1.fna.fbcdn.net/v/t39.30808-6/654477612_122186215796530441_8808587420887287472_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=rwJa_mDhPAgQ7kNvwE0BxXy&_nc_oc=AdrEKONiMLYk0xDiX7H6XaBGo4uZmwZrU5n125fIk56qThUvdtBBGwLqbb109JsizOR8MMfy-f-DPFpk4nbI83f8&_nc_zt=23&_nc_ht=scontent.fbkk25-1.fna&_nc_gid=u7X0TzgXMRlCbxJo_IYEEQ&_nc_ss=7b2a8&oh=00_Af3gL4SZHNAZeFrliT1bX92XJn3jpO_mYbXFsGMX-DogzA&oe=69F6891B" class="card-img">
-                    <div><span class="role">FOUNDER</span><span class="name">Phayu</span></div>
+                    <div class="info-text"><span class="role">FOUNDER</span><span class="name">Phayu</span></div>
                 </div>
                 <div class="social-btns"><a href="https://www.facebook.com/profile.php?id=61565913242691" target="_blank" class="btn">Facebook</a></div>
             </div>
         </div>
 
-        <h2 class="section-title" style="color: #ff3366; border-top: 1px solid #333; padding-top: 20px;">LEADERS</h2>
+        <h2 class="section-title" style="color: #ff3366;">LEADERS</h2>
         <div class="card-grid">
             <div class="card pink">
                 <div class="profile-section">
                     <img src="https://media.discordapp.net/attachments/1497970429464285325/1498668379610025984/GTA5_2026-04-06_04-13-26.jpg?ex=69f1ff31&is=69f0adb1&hm=17762137bb3b54eb23364aaa93d36b6a7b50a5cdc485c37c1c49acb6a214d874&=&format=webp&width=788&height=788" class="card-img">
-                    <div><span class="role">LEADER</span><span class="name">Ticha</span></div>
+                    <div class="info-text"><span class="role">LEADER</span><span class="name">Ticha</span></div>
                 </div>
                 <div class="social-btns"><a href="https://www.facebook.com/profile.php?id=61584644049375" target="_blank" class="btn">Facebook</a></div>
             </div>
@@ -133,18 +137,18 @@
             <div class="card pink">
                 <div class="profile-section">
                     <img src="https://scontent.fbkk25-1.fna.fbcdn.net/v/t39.30808-6/673886389_1494322468892427_9021933643274295219_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=A9Y2oe9wvbAQ7kNvwG9gcD-&_nc_oc=AdrugHeDogCy9-V84uS386azVwijh-PXViD3IJGhmrwMod9g6ufegJmAA5LyAfXTuD2a5TZXOY5FyC1CKtKbSli2&_nc_zt=23&_nc_ht=scontent.fbkk25-1.fna&_nc_gid=KHOrP_JrNKjP3LKsNRFzBw&_nc_ss=7b2a8&oh=00_Af2ZDByQGLlPQLLH6mB9sr3P_DwywgBI6jsn0oqqp17yBw&oe=69F675ED" class="card-img">
-                    <div><span class="role">LEADER</span><span class="name">Ribbin</span></div>
+                    <div class="info-text"><span class="role">LEADER</span><span class="name">Ribbin</span></div>
                 </div>
                 <div class="social-btns"><a href="https://www.facebook.com/profile.php?id=100049440653827" target="_blank" class="btn">Facebook</a></div>
             </div>
         </div>
 
-        <h2 class="section-title" style="color: #3399ff; border-top: 1px solid #333; padding-top: 20px;">MEMBERS</h2>
+        <h2 class="section-title" style="color: #3399ff;">MEMBERS</h2>
         <div class="card-grid">
             <div class="card blue">
                 <div class="profile-section">
                     <img src="https://scontent.fbkk25-1.fna.fbcdn.net/v/t39.30808-6/680003841_122211700664929284_898363009130383469_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=QJkU9Pib1J4Q7kNvwH82fml&_nc_oc=AdpT6rIp6yEtyG6tougSzu90BSuKm9EJ_muVuwxpyf37q5uZa7kC8TXMu6cKF_I6UzPPaLCcYPv7npVhFZ_bPHyA&_nc_zt=23&_nc_ht=scontent.fbkk25-1.fna&_nc_gid=O1D7UUfCjiUt6su73j2iaQ&_nc_ss=7b2a8&oh=00_Af2L3fnoMNTpTVegKkUBRzeBd6eALJYkeSch6u-UKpGj_g&oe=69F694EE" class="card-img">
-                    <div><span class="role">MEMBER</span><span class="name">Copper</span></div>
+                    <div class="info-text"><span class="role">MEMBER</span><span class="name">Copper</span></div>
                 </div>
                 <div class="social-btns"><a href="https://www.facebook.com/phm.hlx.sud.2025" target="_blank" class="btn">Facebook</a></div>
             </div>
