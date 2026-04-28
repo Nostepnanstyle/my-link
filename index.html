@@ -1,0 +1,53 @@
+HTML
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My List Style</title>
+    <style>
+        /* ส่วนแต่งสวย (CSS) ใส่รวมไว้ที่นี่เลยจะได้ไม่งง */
+        body { background-color: #0d1117; color: white; font-family: 'Tahoma', sans-serif; display: flex; justify-content: center; padding: 50px 20px; }
+        .container { width: 100%; max-width: 400px; text-align: center; }
+        .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #58a6ff; margin-bottom: 15px; }
+        h1 { font-size: 22px; margin-bottom: 20px; }
+        .list-group { display: flex; flex-direction: column; gap: 12px; }
+        .item { 
+            background: #161b22; 
+            padding: 15px; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            color: #c9d1d9; 
+            border: 1px solid #30363d;
+            transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+        }
+        .item:hover { background: #21262d; border-color: #58a6ff; transform: translateY(-2px); }
+        .status { color: #58a6ff; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://via.placeholder.com/150" class="profile-img">
+    <h1>ยินดีต้อนรับ</h1>
+    
+    <div class="list-group">
+        <a href="ลิ้งที่ต้องการไป" class="item">
+            <span>รายชื่อที่ 1</span>
+            <span class="status">คลิกดู</span>
+        </a>
+        <a href="#" class="item">
+            <span>รายชื่อที่ 2</span>
+            <span class="status">ว่าง</span>
+        </a>
+        <a href="#" class="item">
+            <span>รายชื่อที่ 3</span>
+            <span class="status">ว่าง</span>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
